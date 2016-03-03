@@ -1,0 +1,78 @@
+<!--Author: Raj F PAul
+Purpose Finance Recommendation Provider using CSV files and Google Places API,PapaParse.js and D3-->
+<!DOCTYPE html>
+<html ng-app ="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Finance Recommendation service</title>
+    <link rel="shortcut icon" href="data/rfp.ico?v=2">
+    <link rel="icon" type="image/x-icon" href="data/rfp.ico">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href='Finance.css' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body >
+
+<div class=" main_container ">
+    <div class="visible-xs col-xs-5" style="height: 100%;">
+        <button class="dropdown-toggle col-xs-8 justDark"  type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"><strong> Menu</strong></span>
+        </button>
+        <ul class="dropdown-menu" style="background:black;" aria-labelledby="dropdownMenu1">
+            <!--<li><button class ="navButton" type="button" onclick="reset();">Reset Database</button></li>-->
+            <li><button class ="navButton" type="button" onclick="choosePage('#sample');">Sample CSV File</button></li>
+            <li><button class ="navButton" type="button" onclick="per('transactions-person-A.csv');">Person A</button>  </li>
+            <li><button class ="navButton" type="button" onclick="per('transactions-person-B.csv');">Person B</button>  </li>
+            <li><label class ="navButton" for="files"> Or enter CSV file:</label><input class ="navButton" id="files1" type="file"  class="row" /></li>
+            <li><button class ="navButton fButton" type="button" onclick="enteredFiles()">Use File !</button></li>
+        </ul>
+    </div>
+        <!--<button class ="navButton" type="button" onclick="reset();">Reset Database</button>-->
+        <button class ="navButton hidden-xs " type="button" onclick="choosePage('#sample');">Sample CSV File</button>
+        <button class ="navButton hidden-xs " type="button" onclick="per('transactions-person-A.csv');">Person A</button>
+        <button class ="navButton hidden-xs " type="button" onclick="per('transactions-person-B.csv');">Person B</button>
+        <div style="display:inline-block " class="hidden-xs">
+             <label style="color:white; " for="files"> Or enter CSV file:</label><input class ="navButton"  id="files" type="file" class="row" />
+            <button class ="navButton fButton" type="button" onclick="enteredFiles()"><b>Use File !</b></button>
+        </div>
+
+</div>
+<br>
+<br><br>
+<div  id="empty" ></div>
+<div class="col-xs-12 col-sm-11 col-md-11 col-lg-11 center flex-container" id="center" >
+
+    <h4> Hi there, This is a single page application to draw the spending habits of a person using D3.js from transaction data in a CSV file
+        and make small suggestions.
+        <br>This application uses JQuery, Bootstrap, Papaparse for Parsing, Angular, the Google Places API and D3 for the graph. (Original csv data provided
+        by Intuit Inc. and used only for demonstration purposes)
+        <br><br> A sample CSV can be seen by clicking that button in the navBar. The app expects at least 3 months of data. Ideally, intended for 2 years worth of data.
+
+        <br><br><b>Instructions:</b> Click "Person A" or "Person B" to show their spending habits for 2 years provided, or use your own CSV file
+        and then click "Use File!". The app stores new data every time it queries unseen keys(transactions) from new csv files using the Google Places API,
+        the app already contains the data derived from Person A and Person B who are from Indianapolis.
+    </h4>
+    <section class="content">
+        <div ng-view></div>
+    </section>
+
+    <br>
+</div>
+
+<script src="lib/angular-1.4.9/angular.min.js"></script>
+<script src="lib/angular-1.4.9/angular-route.min.js"></script>
+<!--Modules-->
+<script src="app.js"></script>
+
+<!--Libraries-->
+<script src="lib/d3.min.js"></script>
+<script src="lib/papaparse.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOOaUSvGv-eVQnq1M0hyfFVrftmxU8EHc&libraries=places"></script>
+
+<!--Modules-->
+<script src="prepareData.js"></script>
+<script src="graph.js"></script>
+
+</body>
+</html>

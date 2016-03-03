@@ -1,0 +1,114 @@
+body {
+    background-color: #ADD8E6;
+}
+
+.center {
+    padding: 0;
+    background-color: white;
+
+    border-radius: 5px;
+    border: 1px solid #337AB7;
+
+    float:none;
+    margin: auto;
+    overflow: hidden;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+section.content {
+    flex: 1;
+}
+
+#result h4{
+ text-align: center;
+}
+
+.important{
+    color:red;
+}
+
+#files{
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0;
+}
+
+#graph1{
+    background: url('data/mint-logo.png') no-repeat  center ;
+
+}
+
+.main_container{
+    position:fixed;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    z-index: 2;
+    height:60px;
+    background-color: black;
+    border-bottom: 1px ridge black;
+}
+
+.line {
+    fill: none;
+    stroke-width: 2px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+
+
+.navButton {
+    height: 100%;
+    padding:10px;
+    background-color: #000000;
+    color: white;
+    border: none;
+}
+
+.miniNavBtn{
+    border: none;
+    background-color: #000000;
+    color:white;
+}
+
+.navButton {
+    height: 100%;
+    padding:10px;
+    background-color: #000000;
+    font-size: medium;
+    color: #ffffff;
+    border: none;
+}
+
+
+.justDark {
+    height: 100%;
+    padding:0;
+    background-color: #000000;
+    color: #ffffff;
+    border: none;
+}
+
+.justDark:hover,
+.navButton:hover{
+     box-shadow: 0 2px 5px 5px lightgray inset;
+ }
+.navButton:focus{
+    box-shadow: 0 2px 5px 5px red inset;
+}
+
