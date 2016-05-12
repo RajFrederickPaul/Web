@@ -1,0 +1,153 @@
+html,body, button {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:large;
+    vertical-align:baseline;
+    background:transparent;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color:#F0F0F0;
+}
+
+.main{
+    margin:0 1em 1em;
+}
+
+.nav{
+    height:6em;
+    border: 1em solid #E2E2E2;
+    border-bottom: 0;
+}
+
+#heading{
+    margin-bottom: 0;
+    padding-left: 1rem;
+}
+#version{
+    padding-left: 1rem;
+    margin-top: 0;
+}
+.sections{
+    display:flex;
+    justify-content: space-between;
+}
+.section{
+    background-color:white;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-shrink: 0;
+    padding:1em 2em 2em;
+}
+
+.section h3{
+    font-family: "Times New Roman", Times, serif;
+}
+
+.section1{
+    margin-right: 0.25em;
+    padding-right: 4em;
+}
+.section2{
+    margin-left: 0.25em;
+}
+
+.submit{
+    color: white;
+    background-color: black;
+    padding:0.5em;
+    border-radius: 0.25em;
+}
+
+input{
+    background-color: #ECECEC;
+    border-radius: 0.25em;
+    border:0;
+    padding: 0.5rem;
+    display: block;
+    width: 100%;
+}
+
+.list{
+    border-radius: 0.25em;
+    border: 0.25em solid #DEDEDE;
+    display:inline-table;
+}
+
+table {
+    border-spacing: 0;
+    margin:0 0.125em;
+}
+
+tbody{
+}
+
+td{
+    padding:10px;
+}
+
+tr:nth-child(even) {
+    background-color: #ECECEC;
+}
+
+td.assign{
+    width:10em;
+    text-align: right;
+    font-size: smaller;
+    vertical-align: middle
+}
+
+td.date{
+    text-align: left;
+    padding-left: 0;
+    font-size: smaller;
+    vertical-align: middle;
+}
+
+td.name {
+    font-family: "Times New Roman", Times, serif;
+}
+
+
+@media screen and (max-width: 1200px) {
+    html,body, button{
+        font-size: medium;
+    }
+
+
+}
+
+@media screen and (max-width: 700px) {
+    html,body, button {
+        font-size: small;
+    }
+
+}
+
+
+@media screen and (max-width: 400px) {
+    html, body, button{
+        font-size: xx-small;
+    }
+
+    .sections{
+        display:block;
+    }
+    .section{
+        background-color:white;
+    }
+    .section1{
+        margin-right: 0;
+        padding-right: 4em;
+    }
+    .section2{
+        margin-top: 1em;
+        margin-left: 0;
+    }
+    td{
+        padding:0.25em;
+    }
+}

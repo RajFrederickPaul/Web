@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>GS_Albany</title>
+    <link href="MyCSS.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="nav">
+        <h1 id="heading">Task Tracker</h1>
+        <p id="version">v2.0</p>
+    </div>
+    <div class="main">
+    <div class="sections">
+        <div class="section section1">
+            <h3>Create a Task</h3>
+            <form>
+                Task Name<br>
+                <input type="text" name="tName" id="tName" /><br><br>
+
+                Date<br>
+                <input type="text" name="date" id="date" /><br><br>
+
+                Assigned To<br>
+                <input type="text" name="assign" id="assign" />
+            <br><br>
+            </form>
+            <button class="submit" onclick="prepend();">Submit</button>
+
+        </div>
+        <div class="section section2">
+            <h3>Existing Tasks</h3>
+            <div class="list">
+                <table><tbody id="taskList"></tbody></table>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script>
+var baseData=[
+    {"name": "Test Task #1", "date": "12/01/2012", "assigned": "John Doe" },
+    {"name": "Test Task #2", "date": "12/02/2012", "assigned": "John Doe" },
+    {"name": "Test Task #3", "date": "12/03/2012", "assigned": "John Doe" },
+    {"name": "Test Task #4", "date": "12/04/2012", "assigned": "John Doe" },
+    {"name": "Test Task #5", "date": "12/05/2012", "assigned": "John Doe" },
+    {"name": "Test Task #6", "date": "12/06/2012", "assigned": "John Doe" },
+    {"name": "Test Task #7", "date": "12/07/2012", "assigned": "John Doe" }
+];
+var storagePresent=false,tasks = baseData;
+
+
+
+
+(function(){
+    function isJSON(string) {
+        var parsedJSON;
+        try {
+            parsedJSON=JSON.parse(string);
+        } catch (e) {
+            return false;
+        }
+        return parsedJSON;
+    }
+
+    if(typeof(Storage) !== "undefined") {
+        storagePresent=true;
+        var temp=isJSON(localStorage.getItem("Tasks"));
+        if(temp && Object.prototype.toString.call( temp ) === '[object Array]'){
+            tasks = temp;
+        }else{
+            localStorage.setItem("Tasks", JSON.stringify(baseData));
+        }
+
+    } else {
+        console.log("No local storage");
+    }
+    populate();
+
+}());
+
+
+
+function populate() {
+    var r = [], j = -1;
+    for (var key = 0, size = tasks.length; key < size; key++) {//Using a for loop, can Use child nodes and jQuery as sown in Prepend function
+        r[++j] = '<tr><td class="name"><strong>';
+        r[++j] = tasks[key].name;
+        r[++j] = '</strong></td><td class="date">';
+        r[++j] = tasks[key].date;
+        r[++j] = '</td><td class="assign"><strong>';
+        r[++j] = tasks[key].assigned;
+        r[++j] = '</strong></td></tr>';
+    }
+    $('#taskList').html(r.join(''));
+}
+
+    function prepend(){
+        var date=document.getElementById("date").value;
+        var tName=document.getElementById("tName").value;
+        var assign=document.getElementById("assign").value;
+        var taskList=document.getElementById("taskList");
+
+        if(!date || !tName || !assign){
+            alert("Invalid Input");
+            return;
+        }
+        var matches = /^(\d{2})[-\/](\d{2})[-\/](\d{4})$/.exec(date);
+        if(matches == null ){//Just doing minimal Format checking. Not Date checking
+            alert("Invalid Date Use: MM/DD/YYYY");
+            return;
+        }
+
+        var tObject={"name": tName, "date": date, "assigned": assign };
+        tasks.unshift(tObject);
+
+        if(storagePresent){
+            localStorage.setItem("Tasks", JSON.stringify(tasks));
+        }
+        $("<tr><td class='name'><strong>"+tName+"</strong></td><td class='date'>"+date+"</td><td class='assign'><strong>"+assign+"</strong></td></tr>").prependTo("table > tbody");
+    }
+
+</script>
+</body>
+</html>
