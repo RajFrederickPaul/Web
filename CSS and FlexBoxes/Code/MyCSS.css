@@ -1,0 +1,288 @@
+html,body, button, fieldset {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:large;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    background-color: black;
+}
+
+.main{
+
+    top:0;
+    left:0;
+    right:0;
+    background-color: white;
+    z-index: 2;
+}
+
+nav{
+    min-height: 3.125em;
+    margin: auto auto;
+    padding: 3em 5em 0 5em;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    display: flex;
+    justify-content: center;
+}
+
+.main p{
+    text-align: center;
+}
+
+.nav-button{
+    height: 2em;
+    width: 6.25em;
+    margin: 0 4px;
+    border-bottom: 2px solid black;
+}
+
+.nav-button:focus {
+    color: #2B9BDA;
+    border: 2px solid #2B9BDA;
+}
+
+
+h2{
+    text-align: center;
+}
+
+.meter{
+    position: relative;
+    margin: auto auto;
+    padding: 2em 0 4em 0;
+    width:50%;
+}
+
+
+.thermometer{
+    position: relative;
+    height: 1em;
+    width: 100%;
+    margin: -1em auto 0;
+    border: 1px solid #000000;
+    border-radius: 1em;
+}
+
+.slider{
+    position: absolute;
+    left:0;
+    margin-top:-0.3em;
+    margin-left: -0.6875em;
+    border: 0.25em solid #2B9BDA;
+    height: 1.125em;
+    width: 1.125em;
+    border-radius: 1em;
+    background: #000000;
+}
+
+.mercury{
+    position: absolute;
+    background-color: lightblue;
+    border-radius: 1em 0 0 1em ;
+    height: 1em;
+    width: 12.5%;
+    left:0;
+    top:0;
+}
+
+.notches{
+    position: absolute;
+    top:0;
+    height: 1em;
+    width: 25%;
+    border-left: 1px solid #000000;
+}
+.notches:first-child{
+    width: 12.5%;
+}
+
+input[type=radio]{
+    min-width: 4em;
+    margin:0.25em 0;
+}
+
+.checked span{
+    color: #2B9BDA;
+}
+
+label{
+    margin-left: calc(25% - 4.25em);
+    display: inline-block;
+    max-width: 4em;
+    text-align: center;
+}
+
+label.first{
+    margin-left: calc(12.5% - 2em);
+}
+
+.spacer
+{
+    width: 0;
+    height: 0;
+    border-left: 2em solid transparent;
+    border-right: 2em solid transparent;
+    border-top: 2em solid white;
+    margin:0 auto;
+}
+
+
+.articles{
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    display: flex;
+    justify-content:space-between;
+    padding-bottom: 2.5%;
+}
+
+.note{
+    position: relative;
+    padding: 16px;
+    background-color: #A6A6A6;
+    color: #000000;
+    -webkit-flex-grow: 1;
+    flex-grow :1;
+    display: -webkit-flex;
+    -webkit-justify-content: space-between;
+    display: flex;
+    justify-content:space-between;
+}
+
+.note:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 1em solid transparent;
+    border-bottom: 1em solid #656565;
+}
+
+.note:after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    border-top: 1em solid #000000;
+    border-right: 1em solid transparent;
+}
+
+.note1{
+    margin:10px 0 0 2.5%;
+}
+
+.image{
+     display: -webkit-flex;
+    -webkit-flex-direction: column;
+    -webkit-justify-content: center;
+     display: flex;
+     flex-direction: column;
+     justify-content:center;
+}
+
+img{
+    width: 200px;
+    height: auto;
+}
+
+.note2{
+    margin:10px 2.5% 0  2.5%;
+}
+
+.note2 .image{
+    -webkit-justify-content:flex-end;
+    justify-content:flex-end;
+}
+
+.botArticle img{
+    width: 400px;
+}
+
+.content{
+    min-width: 150px;
+    padding:0 10px;
+}
+
+.botArticle{
+    margin:0 2.5% 2.5%;
+}
+
+.lMore{
+    height: 2em;
+    width: 6.25em;
+    border: 2px solid black;
+    border-radius: 2em;
+}
+
+.note:hover{
+    background-color: #2B9BDA;
+    color: white;
+}
+
+.note:hover .lMore{
+    color: white;
+    border-color:  white;
+}
+
+.note:hover:before {
+    border-bottom: 1em solid #005684;
+}
+
+
+
+@media screen and (max-width: 1200px) {
+    html,body, button, fieldset {
+        font-size: medium;
+    }
+    img {
+        width: 100px;
+    }
+
+    .botArticle img{
+        width: 200px;
+    }
+
+
+}
+
+@media screen and (max-width: 700px) {
+    html,body, button, fieldset {
+        font-size: small;
+    }
+
+    .meter{
+        width:75%;
+    }
+
+    .articles{
+        display: inline-block;
+        padding-bottom: 0;
+    }
+    .note1{
+        margin:3%;
+    }
+
+    .note2,.botArticle{
+        margin:0 3% 3%;
+    }
+
+    .botArticle img{
+        width: 100px;
+    }
+
+    .content{
+        min-width: 130px;
+        padding:0 5px;
+    }
+
+}
+
